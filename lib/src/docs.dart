@@ -1,6 +1,7 @@
-import 'utils.dart' show printDivider, printTitle, calculateAge; // Import file utils.dart
-import 'Classes/Person.dart' show Person; // Import class Person from file Person.dart
-import 'config.dart' show env; // Import variable apiKey from file config.dart
+import 'utils/utils.dart' show printDivider, printTitle, calculateAge; // Import file utils.dart
+import 'classes/Person.dart' show Person; // Import class Person from file Person.dart
+import 'config/config.dart' show env; // Import variable apiKey from file config.dart
+
 void printDocumentation() {
   printTitle('Dart Basic Syntax');
   printDivider();
