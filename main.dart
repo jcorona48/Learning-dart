@@ -5,6 +5,10 @@ void main() {
   printDivider();
   variableDeclaration();
   objectDeclaration();
+  conditionalStatement(10, 20);
+  conditionalStatement(20, 10);
+  loopStatement();
+  listDeclaration();
 }
 
 // Function declaration
@@ -26,6 +30,33 @@ void objectDeclaration() {
   printTitle('Object Declaration');
   Person person = Person(name: 'John', age: 25);
   person.showInfo();
+  printDivider();
+}
+
+void conditionalStatement(int num1, int num2) {
+  printTitle('Conditional Statement');
+  if (num1 > num2) {
+    print('Number 1 is greater than Number 2');
+  } else {
+    print('Number 1 is less than Number 2');
+  }
+  printDivider();
+}
+
+void loopStatement() {
+  printTitle('Loop Statement');
+  for (int i = 0; i < 5; i++) {
+    print('Index: ${i+1}');
+  }
+  printDivider();
+}
+
+void listDeclaration() {
+  printTitle('List Declaration');
+  List<int> numbers = [1, 2, 3, 4, 5];
+  for (int number in numbers) {
+    print('Number: ${number}');
+  }
   printDivider();
 }
 
