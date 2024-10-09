@@ -1,7 +1,7 @@
 import 'utils/utils.dart' show printDivider, printTitle, calculateAge; // Import file utils.dart
 import 'classes/Person.dart' show Person; // Import class Person from file Person.dart
-import 'config/config.dart' show env; // Import variable apiKey from file config.dart
-
+import 'config/config.dart' show Config; // Import variable apiKey from file config.dart
+import 'docs/fetching-data.dart' show printFetch; // Import function fetchData from file fetching-data.dart
 void printDocumentation() {
   printTitle('Dart Basic Syntax');
   printDivider();
@@ -13,6 +13,7 @@ void printDocumentation() {
   listDeclaration();
   mapDeclaration();
   usingDependencies();
+  printFetchTesting();
 }
 
 // Function declaration
@@ -77,7 +78,13 @@ void mapDeclaration() {
 
 void usingDependencies() {
   printTitle('Using Dependencies');
-  print('Example Text: ${env['TEST_MESSAGE']}');
+  print('Example Text: ${Config.TEST_MESSAGE}');
+  printDivider();
+}
+
+printFetchTesting() async {
+  printTitle('Fetching Data');
+  await printFetch();
   printDivider();
 }
 
