@@ -14,6 +14,7 @@ This project demonstrates fundamental concepts of Dart, including variable decla
   - [List Declaration](#list-declaration)
   - [Map Declaration](#map-declaration)
   - [Using Dependencies](#using-dependencies)
+  - [Fetching Data](#fetch-example)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -51,6 +52,8 @@ Learning-dart/
 │   │   └── Person.dart     # Person class definition
 │   ├── config/
 │   │   └── config.dart     # Configuration for environment variables
+│   ├── docs/
+│   │   └── fetching-data.dart     # Function Fetching declaration
 │   ├── utils/
 │   |    └── utils.dart      # Utility functions (printDivider, printTitle, calculateAge)
 |   └── docs.dart            # All Funtion Declaration
@@ -122,8 +125,43 @@ Map<String, Object> author = {
 External dependencies (e.g., environment variables) are managed using a configuration file.
 
 ```dart
-print('Example Text: ${env['TEST_MESSAGE']}');
+print('Example Text: ${Config.TEST_MESSAGE}');
 ```
+
+### Fetch Example
+This section illustrates how to fetch data from an API using the http package.
+
+Code Overview
+```dart
+import 'package:http/http.dart' as http;
+import '../config/config.dart' show Config;
+import 'dart:convert';
+import '../classes/Product.dart' show Product;
+
+Future<Product?> fetch({String urlPath = ''}) async {
+  try {
+    final url = Uri.https(Config.API_BASE_URL, urlPath);
+    final response = await http.get(url);
+    final data = json.decode(response.body) as Map<String, dynamic>;
+    return Product.fromJson(data);
+  } catch (e) {
+    print('Error: $e');
+    return null;
+  }
+}
+
+printFetch() async {
+  final product = await fetch(urlPath: 'products/17');
+  if (product != null) {
+    print('ID: ${product.id}');
+    print('Name: ${product.name}');
+    print('Price: ${product.price}');
+    print('Image: ${product.image}');
+  }
+}
+```
+Usage
+To use the fetch function, ensure your API base URL is set in your configuration. Call printFetch to retrieve and display product details.
 
 ## Contributing
 
