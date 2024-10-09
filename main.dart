@@ -1,4 +1,5 @@
 import 'utils.dart' show printDivider, printTitle; // Import file utils.dart
+import 'Classes/Person.dart' show Person; // Import class Person from file Person.dart
 void main() {
   printTitle('Dart Basic Syntax');
   printDivider();
@@ -26,22 +27,6 @@ void objectDeclaration() {
   Person person = Person(name: 'John', age: 25);
   person.showInfo();
   printDivider();
-}
-
-// Class declaration
-class Person {
-  String? name;
-  int? age;
-
-  // Constructor
-  Person({this.name, this.age}) {
-    print('Person object created');
-  }
-
-  // Method
-  void showInfo() {
-    print('Person: ${name} - ${age}');
-  }
 }
 
 /* Notes: 
