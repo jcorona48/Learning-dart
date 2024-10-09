@@ -1,6 +1,6 @@
-import 'utils.dart' show printDivider, printTitle; // Import file utils.dart
+import 'utils.dart' show printDivider, printTitle, calculateAge; // Import file utils.dart
 import 'Classes/Person.dart' show Person; // Import class Person from file Person.dart
-
+import 'config.dart' show env; // Import variable apiKey from file config.dart
 void printDocumentation() {
   printTitle('Dart Basic Syntax');
   printDivider();
@@ -10,6 +10,8 @@ void printDocumentation() {
   conditionalStatement(20, 10);
   loopStatement();
   listDeclaration();
+  mapDeclaration();
+  usingDependencies();
 }
 
 // Function declaration
@@ -58,6 +60,23 @@ void listDeclaration() {
   for (int number in numbers) {
     print('Number: ${number}');
   }
+  printDivider();
+}
+
+void mapDeclaration() {
+  printTitle('Map Declaration');
+  Map<String, Object> author = {
+    'name': 'Joan',
+    'lastname': 'Corona',
+    'age': calculateAge(2003),
+  };
+  print('Author: ${author}');
+  printDivider();
+}
+
+void usingDependencies() {
+  printTitle('Using Dependencies');
+  print('Example Text: ${env['TEST_MESSAGE']}');
   printDivider();
 }
 
